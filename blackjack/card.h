@@ -16,7 +16,7 @@ private:
 class Deck {
 public:
 	Deck();
-	int get_num_cards();
+	void print();
 	Card draw();
 private:
 	std::map<int, int> cardlist;

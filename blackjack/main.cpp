@@ -1,6 +1,7 @@
 #include "card.h"
 #include <iostream>
 #include <map>
+#include <vector>
 using namespace std;
 
 int main() {
@@ -23,4 +24,17 @@ int main() {
 	cout << cards[3] << endl;
 	cards[3]--;
 	cout << cards[3] << endl;
+
+	// testing deck class
+	Deck standard = Deck();
+	vector<Card> hand;
+	for (int i = 0; i < 5; i++) {
+		hand.push_back(standard.draw());
+	}
+	vector<Card>::iterator it2 = hand.begin();
+	while (it2 != hand.end()) {
+		cout << it2->get_value();
+		it2++;
+	}
+	standard.print();
 }

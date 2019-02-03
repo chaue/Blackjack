@@ -1,4 +1,5 @@
 #include "card.h"
+#include <iostream>
 #include <map>
 
 Deck::Deck() {
@@ -7,14 +8,12 @@ Deck::Deck() {
 	}
 }
 
-int Deck::get_num_cards() {
-	int total = 0;
+void Deck::print() {
 	std::map<int, int>::iterator it = cardlist.begin();
 	while (it != cardlist.end()) {
-		total += it->second;
+		std::cout << "value: " << it->first << "  " << "amount left: " << it->second << std::endl;
 		it++;
 	}
-	return total;
 }
 
 Card Deck::draw() {
