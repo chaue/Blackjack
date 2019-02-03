@@ -7,6 +7,7 @@ public:
 	Card(int val);
 	int get_value() const;	// returns card value
 	//void drawn();			// removes card from "deck"
+	void print() const;
 private:	
 	int value;				// range from 1 to 13
 	friend class Deck;

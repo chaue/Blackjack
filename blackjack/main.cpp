@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-int main() {
+int test() {
 	// card class works
 	Card c = Card(5);
 	int cval = c.get_value();
@@ -37,4 +37,10 @@ int main() {
 		it2++;
 	}
 	standard.print();
+}
+
+int main() {
+	test();
+
+
 }
