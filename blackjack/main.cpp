@@ -7,7 +7,7 @@ int main() {
 	// card class works
 	Card c = Card(5);
 	int cval = c.get_value();
-	cout << cval;
+	cout << cval << endl;
 
 	// testing map stuff
 	map<int, int> cards;
@@ -16,7 +16,11 @@ int main() {
 	
 	map<int,int>::iterator it = cards.begin();
 	while (it != cards.end()) {
-		cout << it->first << " " << it->second;
+		cout << it->first << " " << it->second << endl;
 		it++;
 	}
+
+	cout << cards[3] << endl;
+	cards[3]--;
+	cout << cards[3] << endl;
 }
