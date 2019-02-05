@@ -86,6 +86,8 @@ int main() {
 	// start the game
 	int ptotal = 0;
 	int dtotal = 0;
+	bool lose = false;
+	bool win = false;
 	string hitans;
 	Deck deck = Deck();			// init Deck
 	vector<Card> p;		// player hand
@@ -102,12 +104,15 @@ int main() {
 	getline(cin, hitans);
 	while (hitans != "n") {
 		hit(p, deck);
+		printplayer(p);
 		if (calctotal(p) > 21) {
 			cout << "You lose...";
+			lose = true;
 			break;
 		}
 		else if (calctotal(p) == 21) {
 			cout << "You win!";
+			win = true;
 			break;
 		}
 		else if (calctotal(p) < 21) {
@@ -116,4 +121,22 @@ int main() {
 		}
 	}
 
+	if (win == true || lose == true) return 0;
+
+	// until beats player or goes bust
+	while (true) {		
+		hit(d, deck);
+		printplayer(d);
+		if (calctotal(d) == 21) {
+			cout << "Dealer wins!";
+			break;
+		}
+		else if (calctotal(d) > calctotal(p) && calctotal(d) < 21) {
+			cout << "Dealer wins!";
+		}
+		else if (calctotal(d) > 21) {
+			cout << "You win!";
+			break;
+		}
+	}
 }
