@@ -2,6 +2,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <string>
 using namespace std;
 
 int test() {
@@ -37,10 +38,37 @@ int test() {
 		it2++;
 	}
 	standard.print();
+	return 0;
+}
+
+void firsttwo(vector<Card>& vec, Deck& d) {
+	vec.push_back(d.draw());
+	vec.push_back(d.draw());
+}
+
+void printhand(vector<Card>& vec) {
+	cout << "Cards are: ";
+	for (int i = 0; i < vec.size(); i++) {
+		vec[i].print();
+		cout << " ";
+	}
+	cout << endl;
 }
 
 int main() {
-	test();
+	// test();
+	string start;
+	cout << "Start a game of blackjack (y/n) ?";
+	getline(cin, start);
+	if (start == "n") return 0;		// stop program if no
+	
+	// start the game
+	Deck deck = Deck();			// init Deck
+	vector<Card> player;		// player hand
+	vector<Card> dealer;		// dealer hand
 
-
+	firsttwo(player, deck);
+	firsttwo(dealer, deck);
+	printhand(player);
+	printhand(dealer);
 }
