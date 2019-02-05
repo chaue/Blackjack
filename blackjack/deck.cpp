@@ -3,9 +3,10 @@
 #include <map>
 
 Deck::Deck() {
-	for (int i = 1; i < 14; i++) {
+	for (int i = 1; i < 10; i++) {
 		cardlist.insert(std::pair<int, int>(i, 4));
 	}
+	cardlist.insert(std::pair<int, int>(10, 12));
 }
 
 void Deck::print() {

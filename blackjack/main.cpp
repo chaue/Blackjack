@@ -7,11 +7,14 @@ using namespace std;
 
 int test() {
 	// card class works
+	/*
 	Card c = Card(5);
 	int cval = c.get_value();
 	cout << cval << endl;
-
+	*/
+	
 	// testing map stuff
+	/*
 	map<int, int> cards;
 	cards.insert(pair<int, int>(3, 4));
 	cards.insert(pair<int, int>(5, 6));
@@ -25,6 +28,7 @@ int test() {
 	cout << cards[3] << endl;
 	cards[3]--;
 	cout << cards[3] << endl;
+	*/
 
 	// testing deck class
 	Deck standard = Deck();
@@ -46,8 +50,8 @@ void firsttwo(vector<Card>& vec, Deck& d) {
 	vec.push_back(d.draw());
 }
 
-void printhand(vector<Card>& vec) {
-	cout << "Cards are: ";
+void printplayer(vector<Card>& vec) {				// print all player's cards
+	cout << "Your cards are: ";
 	for (int i = 0; i < vec.size(); i++) {
 		vec[i].print();
 		cout << " ";
@@ -55,8 +59,18 @@ void printhand(vector<Card>& vec) {
 	cout << endl;
 }
 
+void printdealer(vector<Card>& vec) {			// hide the first card for the dealer
+	cout << "Dealer's cards are: (*) ";
+
+	for (int i = 1; i < vec.size(); i++) {
+		vec[i].print();
+	}
+	cout << endl;
+}
+
 int main() {
-	// test();
+	test();
+	cout << "\n\n\n";
 	string start;
 	cout << "Start a game of blackjack (y/n) ?";
 	getline(cin, start);
@@ -64,11 +78,11 @@ int main() {
 	
 	// start the game
 	Deck deck = Deck();			// init Deck
-	vector<Card> player;		// player hand
-	vector<Card> dealer;		// dealer hand
+	vector<Card> p;		// player hand
+	vector<Card> d;		// dealer hand
 
-	firsttwo(player, deck);
-	firsttwo(dealer, deck);
-	printhand(player);
-	printhand(dealer);
+	firsttwo(p, deck);
+	firsttwo(d, deck);
+	printplayer(p);
+	printdealer(d);
 }
