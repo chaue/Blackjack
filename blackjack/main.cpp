@@ -45,8 +45,7 @@ int test() {
 	return 0;
 }
 
-void firsttwo(vector<Card>& vec, Deck& d) {
-	vec.push_back(d.draw());
+void hit(vector<Card>& vec, Deck& d) {
 	vec.push_back(d.draw());
 }
 
@@ -68,21 +67,53 @@ void printdealer(vector<Card>& vec) {			// hide the first card for the dealer
 	cout << endl;
 }
 
+int calctotal(vector<Card>& vec) {
+	int total = 0;
+	for (int i = 0; i < vec.size(); i++) {
+		total += vec[i].get_value();
+	}
+	return total;
+}
+
 int main() {
-	test();
-	cout << "\n\n\n";
+	//test();
+	//cout << "\n\n\n";
 	string start;
 	cout << "Start a game of blackjack (y/n) ?";
 	getline(cin, start);
 	if (start == "n") return 0;		// stop program if no
 	
 	// start the game
+	int ptotal = 0;
+	int dtotal = 0;
+	string hitans;
 	Deck deck = Deck();			// init Deck
 	vector<Card> p;		// player hand
 	vector<Card> d;		// dealer hand
 
-	firsttwo(p, deck);
-	firsttwo(d, deck);
+	hit(p, deck);
+	hit(p, deck);
+	hit(d, deck);
+	hit(d, deck);
 	printplayer(p);
 	printdealer(d);
+
+	cout << "Hit (y/n)? ";
+	getline(cin, hitans);
+	while (hitans != "n") {
+		hit(p, deck);
+		if (calctotal(p) > 21) {
+			cout << "You lose...";
+			break;
+		}
+		else if (calctotal(p) == 21) {
+			cout << "You win!";
+			break;
+		}
+		else if (calctotal(p) < 21) {
+			cout << "Hit (y/n)? ";
+			getline(cin, hitans);
+		}
+	}
+
 }
