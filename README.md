@@ -17,5 +17,7 @@ __Update #1__
 * I decided to keep the card class in spite of its repetitive nature(why not just replace it with a simple integer?) in case I want to implement card suits and types down the line.
 
 __Update #2__
-* started on implementing the actual game
+* finished basic implementation of the game
 * fixed the deck class to crudely reflect the 12 face cards as having a value of 10
+* added functions to calculate the hand total, print out the card values, and add cards to hand
+* things to fix: seed the random number generator(as of now it's repeating the same values, making testing difficult), more complex gameplay(like betting)
